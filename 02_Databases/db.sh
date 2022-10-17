@@ -12,4 +12,5 @@ mysqladmin -u root -p create taskdb
 # show databases
 mysql -u root -p -e 'show databases;'
 
-# MySQL commands
+# import database from host mysql client
+mysq -u root -p --protocol=tcp < db.sql
