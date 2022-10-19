@@ -15,13 +15,15 @@ top5pages () {
 }
 
 requestIpCount () {
-    # 3. How many requests were there from each ip?
-    cat $1 | awk '{print $1}' | sort | uniq -c | sort -nr | awk '{ip = $2; r = $1; printf "From IP %-15s - %d request%s\n", ip, r, r == 1 ? "" : "s"}'
+    echo "3. How many requests were there from each ip?"
+    result=$(cat $param | awk '{print $1}' | sort | uniq -c | sort -nr | awk '{ip = $2; r = $1; printf "From IP %-15s - %d request%s\n", ip, r, r == 1 ? "" : "s"}')
+    echo -e "$result\n"
 }
 
 nonExistPages () {
-    # 4. What non-existent pages were clients reffered to?
-    cat $1 | grep " 404 " | cut -d\" -f2 | awk '{print $2}' | sort | uniq
+    echo "4. What non-existent pages were clients reffered to?"
+    result=$(cat $param | grep " 404 " | cut -d\" -f2 | awk '{print $2}' | sort | uniq)
+    echo -e "$result\n"
 }
 
 mostTimeRequest () {
@@ -34,11 +36,13 @@ showSearchBot () {
     echo
 }
 
+
 if [[ $# -ne 1 ]]
 then
     echo -e "For running script it needs one argument - \nlog file name with full path"
 else
-    #cat $1
     top5ip
     top5pages
+    requestIpCount
+    nonExistPages
 fi
