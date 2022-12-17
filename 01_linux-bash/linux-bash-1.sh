@@ -21,9 +21,11 @@ showSubnetIP () {
 showPorts () {
   if [[ `/usr/bin/which netstat` ]]
   then
-    echo "$(sudo netstat -tulpn | grep LISTEN | awk '{print $1,$4}')"
+    echo "$(sudo netstat -tlpn | grep LISTEN | awk '{print $1,$4}')"
   else
-    echo "To run this script you have to install \"netstat\""
+    echo -e "To run this script you have to install \"netstat\"\n\
+In order to do it run on Ubuntu \"sudo apt install net-tools\"\n\
+or \"sudo yum install net-tools\" on Centos"
   fi
 }
 
