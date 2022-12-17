@@ -4,7 +4,7 @@ arpGrep () {
   echo "$(arp $1 | tail -n 1 | awk '{print $1}')"
 }
 
-showSubnetIP () {
+showSubnetIPnmap () {
   if [[ `/usr/bin/which nmap` ]]
   then 
     subnetip="$(sudo nmap -sP -n $(ip -o address | awk '/scope global/ {print $4}' | \
@@ -16,6 +16,14 @@ showSubnetIP () {
   else
     echo "To run this script you have to install \"nmap\""
   fi
+}
+
+showSubnetIP () {
+  ip=`ip -o address | awk '/scope global/ {print $4}' | head -1 | cut -d"/" -f1`
+  netmask=`ip -o address | awk '/scope global/ {print $4}' | head -1 | cut -d"/" -f2`
+  hosts=$((2**(32-$netmask)-2))
+  
+
 }
 
 showPorts () {
