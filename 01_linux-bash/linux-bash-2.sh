@@ -33,8 +33,9 @@ mostTimeRequest () {
 }
 
 showSearchBot () {
-    # 6. What search bots have accessed the site (UA + IP)?
-    echo
+    echo "6. What search bots have accessed the site (UA + IP)?"
+    result=$(cat $param | cut -d" " -f12 | grep -i bot | cut -d/ -f1 | sort | uniq | cut -c 2-)
+    echo -e "$result\n"
 }
 
 
@@ -46,4 +47,6 @@ else
     top5pages
     requestIpCount
     nonExistPages
+    mostTimeRequest
+    showSearchBot
 fi
