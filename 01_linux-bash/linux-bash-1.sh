@@ -19,6 +19,9 @@ showSubnetIPnmap () {
 }
 
 showSubnetIP () {
+  # The method that doesn't use nmap. 
+  # You need to obtain full range of ip addresses to scan in for loop.
+
   ip=`ip -o address | awk '/scope global/ {print $4}' | head -1 | cut -d"/" -f1`
   cidr=`ip -o address | awk '/scope global/ {print $4}' | head -1 | cut -d"/" -f2`
   hosts=$((2**(32-$cidr)-2))
