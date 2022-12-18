@@ -20,9 +20,16 @@ showSubnetIPnmap () {
 
 showSubnetIP () {
   ip=`ip -o address | awk '/scope global/ {print $4}' | head -1 | cut -d"/" -f1`
-  netmask=`ip -o address | awk '/scope global/ {print $4}' | head -1 | cut -d"/" -f2`
-  hosts=$((2**(32-$netmask)-2))
+  cidr=`ip -o address | awk '/scope global/ {print $4}' | head -1 | cut -d"/" -f2`
+  hosts=$((2**(32-$cidr)-2))
+  netmask=$(ifconfig | grep $ip | awk '{print $4}')
+  #M=$(( 0xffffffff ^ ((1 << (32-cidr)) -1) ))
+  #netmask="$(( (M>>24) & 0xff )).$(( (M>>16) & 0xff )).$(( (M>>8) & 0xff )).$(( M & 0xff ))"
   
+  echo "ip = $ip"
+  echo "cidr = $cidr"
+  echo "hosts number = $hosts"
+  echo "netmask = $netmask"
 
 }
 
@@ -49,7 +56,7 @@ main () {
     echo -e $MESSAGE
   elif [[ $1 == "--all" ]]
   then
-    showSubnetIP
+    showSubnetIPnmap
   elif [[ $1 == "--target" ]]
   then
     showPorts
