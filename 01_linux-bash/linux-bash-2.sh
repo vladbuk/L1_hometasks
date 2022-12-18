@@ -27,8 +27,9 @@ nonExistPages () {
 }
 
 mostTimeRequest () {
-    # 5. What time did site get the most requests?
-    echo
+    echo "5. What time did site get the most requests?"
+    result=$(cat $param | cut -d[ -f2 | cut -d] -f1 | awk -F: '{print $2":00"}' | sort -n | uniq -c | sort -rn)
+    echo -e "$result\n"
 }
 
 showSearchBot () {
