@@ -12,5 +12,5 @@ then
     echo -e "\n"
     echo "Logs writes to /tmp/folder_backup.log"
 else
-    echo "This script need 2 arguments: source dir and destination dir."
+    echo "This script needs 2 arguments: source dir and destination dir."
 fi
