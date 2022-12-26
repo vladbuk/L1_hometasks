@@ -21,3 +21,22 @@ sudo systemctl disable mysqld
 ### Secure mysql service
 
 sudo mysql_secure_installation
+
+### Connect to DB
+
+mysql -u root -p [databasename]
+
+## Some SQL queries
+
+```
+mysql> show tables;
++--------------------+
+| Tables_in_homework |
++--------------------+
+| categories         |
+| customers          |
+| orders             |
+| products           |
++--------------------+
+4 rows in set (0.01 sec)
+```
