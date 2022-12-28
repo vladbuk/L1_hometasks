@@ -47,12 +47,12 @@ CREATE TABLE customers (
     PRIMARY KEY (id)
 );
 
-insert into customers (name, email, phone, address) values 
-('Hope Macejkovic','lynch.ramon@gmail.com','(302) 871-9295','33844 Maymie Dam Apt. 098, Vonborough, West Virginia'),
-('Vernice Wisoky','schaden.murl@langworth.com','906-717-2201','45608 Craig Junction Suite 776, New Triston'),
-('Rick Greenholt','elroy96@bahringer.net','906-650-9426','8895 Jamarcus River Apt. 543'),
-('Daija Ortiz','ardith54@yahoo.com','965.340.6943','74815 Effertz Springs Apt. 275'),
-('Eriberto Wunsch','hfriesen@waters.org','1-617-229-5927','78129 Lesch Spur Apt. 990');
+insert into customers (id, name, email, phone, address) values 
+(1, 'Hope Macejkovic','lynch.ramon@gmail.com','(302) 871-9295','33844 Maymie Dam Apt. 098, Vonborough, West Virginia'),
+(2, 'Vernice Wisoky','schaden.murl@langworth.com','906-717-2201','45608 Craig Junction Suite 776, New Triston'),
+(3, 'Rick Greenholt','elroy96@bahringer.net','906-650-9426','8895 Jamarcus River Apt. 543'),
+(4, 'Daija Ortiz','ardith54@yahoo.com','965.340.6943','74815 Effertz Springs Apt. 275'),
+(5, 'Eriberto Wunsch','hfriesen@waters.org','1-617-229-5927','78129 Lesch Spur Apt. 990');
 
 DROP TABLE IF EXISTS orders;
 

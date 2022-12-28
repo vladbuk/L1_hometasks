@@ -40,3 +40,62 @@ mysql> show tables;
 +--------------------+
 4 rows in set (0.01 sec)
 ```
+
+```
+mysql> select name, email from customers where email like '%com';
++-----------------+----------------------------+
+| name            | email                      |
++-----------------+----------------------------+
+| Hope Macejkovic | lynch.ramon@gmail.com      |
+| Vernice Wisoky  | schaden.murl@langworth.com |
+| Daija Ortiz     | ardith54@yahoo.com         |
++-----------------+----------------------------+
+3 rows in set (0.00 sec)
+
+```
+
+```
+mysql> select title from products order by title asc;
++--------------------------------------------------------------+
+| title                                                        |
++--------------------------------------------------------------+
+| 15 Minutes x 15 Days Yoga                                    |
+| Breath is Life: Pranayama, meditation course - Yoga Alliance |
+| Learn Python: The Complete Python Programming Course         |
+| Spanish for Beginners                                        |
+| The Complete 2022 Web Development Bootcamp                   |
+| The English Master Course                                    |
++--------------------------------------------------------------+
+6 rows in set (0.00 sec)
+```
+
+```
+mysql> select productCode, count(customerId) from orders group by productCode order by productCode asc;
++-------------+-------------------+
+| productCode | count(customerId) |
++-------------+-------------------+
+| 1001        |                 1 |
+| 1002        |                 2 |
+| 1003        |                 1 |
+| 1004        |                 2 |
+| 1005        |                 1 |
+| 1006        |                 2 |
+| 1007        |                 1 |
++-------------+-------------------+
+7 rows in set (0.00 sec)
+
+```
+
+```
+mysql> select count(productCode), name from orders, customers where customers.id = orders.customerId group by name order by count(productCode) asc;
++--------------------+-----------------+
+| count(productCode) | name            |
++--------------------+-----------------+
+|                  1 | Rick Greenholt  |
+|                  2 | Hope Macejkovic |
+|                  2 | Vernice Wisoky  |
+|                  2 | Eriberto Wunsch |
+|                  3 | Daija Ortiz     |
++--------------------+-----------------+
+5 rows in set (0.00 sec)
+```
