@@ -1,0 +1,5 @@
+[production]
+prod ansible_host=prod.vladbuk.site
+
+[testing]
+test ansicle_host=test.vladbuk.site
