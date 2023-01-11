@@ -101,17 +101,43 @@ mysql> select count(productCode), name from orders, customers where customers.id
 ```
 
 ```
-INSERT INTO table_name
-VALUES (value1, value2, value3, ...); 
+INSERT INTO orders VALUES (11, 2, 1001, 2);
+
+mysql> select * from orders where customerId=2;
++----+------------+-------------+----------+
+| id | customerId | productCode | quantity |
++----+------------+-------------+----------+
+|  3 |          2 | 1004        |        1 |
+|  4 |          2 | 1005        |        1 |
+| 11 |          2 | 1001        |        2 |
++----+------------+-------------+----------+
+3 rows in set (0.00 sec)
 
 ```
 
 ```
-UPDATE table_name
-SET column1 = value1, column2 = value2, ...
-WHERE condition; 
+UPDATE customers SET phone = '3-123-229-5927' WHERE name = 'Eriberto Wunsch'; 
+
+mysql> select name, phone from customers where name = 'Eriberto Wunsch';
++-----------------+----------------+
+| name            | phone          |
++-----------------+----------------+
+| Eriberto Wunsch | 3-123-229-5927 |
++-----------------+----------------+
+1 row in set (0.00 sec)
+
 ```
 
 ```
-DELETE FROM table_name WHERE condition;
+DELETE FROM orders WHERE id = 11;
+
+mysql> select * from orders where customerId=2;
++----+------------+-------------+----------+
+| id | customerId | productCode | quantity |
++----+------------+-------------+----------+
+|  3 |          2 | 1004        |        1 |
+|  4 |          2 | 1005        |        1 |
++----+------------+-------------+----------+
+2 rows in set (0.00 sec)
+
 ```
