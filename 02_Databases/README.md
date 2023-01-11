@@ -141,3 +141,7 @@ mysql> select * from orders where customerId=2;
 2 rows in set (0.00 sec)
 
 ```
+
+```
+GRANT select, update ON homework.* TO 'test'@'localhost';
+```
