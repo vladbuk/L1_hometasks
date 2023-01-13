@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: true
+  become: true
+
+  tasks:
+  
+  - name: "just ls dir"
+    ansible.builtin.apt:
+      update_cache: true
