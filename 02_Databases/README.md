@@ -1,8 +1,10 @@
 # Working with mysql.
 
-## Install mysql server on Centos Linux
+## Part1. Install mysql server and work with database
+-----------------------------------------------------
 
 sudo yum install mysql-server
+or sudo apt install mysql-server
 
 ### Start and check status
 
@@ -25,6 +27,22 @@ sudo mysql_secure_installation
 ### Connect to DB
 
 mysql -u root -p [databasename]
+
+### Initialize database
+
+```
+mysql> create database homework;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> grant all privileges on homework.* to 'root'@'localhost';
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+```
+
+I have created a database from a sql file.
+
+```
+mysql -u root -p homework --protocol=tcp < /home/vladbuk/projects/L1_hometasks/02_Databases/db.sql
+```
 
 ## Some SQL queries
 
@@ -145,3 +163,57 @@ mysql> select * from orders where customerId=2;
 ```
 GRANT select, update ON homework.* TO 'test'@'localhost';
 ```
+
+## Part 2. Backup and restore database
+--------------------------------------
+
+### Backup
+```
+mysqldump -u root -p homework > /tmp/homework.dump.sql
+```
+Or if we started mysql server in docker container:
+```
+mysqldump -u root -p --protocol=tcp homework > /tmp/homework.dump.sql
+```
+
+Make gzipped dump:
+```
+mysqldump -u root -p --protocol=tcp homework | gzip > /tmp/homework.dump.sql.gzip
+```
+
+Make gzipped dump named with current date and time:
+```
+mysqldump -u root -p --protocol=tcp homework | gzip > `date +/tmp/homework.dump_%Y%m%d-%H%M%S_sql.gzip`
+```
+
+Results:
+```
+vladbuk@ubuntu-desktop:~/projects/L1_hometasks$ ll /tmp/home*
+-rw-rw-r-- 1 ut ut 2.1K Jan 16 18:46 /tmp/homework.dump_20230116-184640_sql.gzip
+-rw-rw-r-- 1 ut ut   20 Jan 16 18:42 /tmp/homework.dump.sql
+-rw-rw-r-- 1 ut ut 2.1K Jan 16 18:42 /tmp/homework.dump.sql.gzip
+
+```
+
+### Restore from backup
+Drop database:
+```
+mysql> drop database homework;
+Query OK, 4 rows affected (0.07 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.01 sec)
+```
+
+After that we have to create the database again and assign privileges as we did it at the beginning.
+
+And now we just restore the database from a previously created dump in a way that depends on the kind of dump.
+
