@@ -196,24 +196,37 @@ vladbuk@ubuntu-desktop:~/projects/L1_hometasks$ ll /tmp/home*
 ```
 
 ### Restore from backup
-Drop database:
-```
-mysql> drop database homework;
-Query OK, 4 rows affected (0.07 sec)
 
-mysql> show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-4 rows in set (0.01 sec)
+Truncate table customers:
+```
+mysql> truncate table customers;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from customers;
+Empty set (0.00 sec)
 ```
 
-After that we have to create the database again and assign privileges as we did it at the beginning.
+Now we just restore the database from a previously created dump in a way that depends on the kind of dump.
 
-And now we just restore the database from a previously created dump in a way that depends on the kind of dump.
+```
+mysql -u root -p --protocol=tcp homework < /tmp/homework.dump.sql
+zcat /tmp/homework.dump.sql.gzip | mysql -u root -p --protocol=tcp homework
+gunzip < /tmp/homework.dump_20230116-184640_sql.gzip | mysql -u root -p --protocol=tcp homework
+```
 
+Everything is working very well:
+```
+mysql> select * from customers;
++----+-----------------+----------------------------+----------------+------------------------------------------------------+
+| id | name            | email                      | phone          | address                                              |
++----+-----------------+----------------------------+----------------+------------------------------------------------------+
+|  1 | Hope Macejkovic | lynch.ramon@gmail.com      | (302) 871-9295 | 33844 Maymie Dam Apt. 098, Vonborough, West Virginia |
+|  2 | Vernice Wisoky  | schaden.murl@langworth.com | 906-717-2201   | 45608 Craig Junction Suite 776, New Triston          |
+|  3 | Rick Greenholt  | elroy96@bahringer.net      | 906-650-9426   | 8895 Jamarcus River Apt. 543                         |
+|  4 | Daija Ortiz     | ardith54@yahoo.com         | 965.340.6943   | 74815 Effertz Springs Apt. 275                       |
+|  5 | Eriberto Wunsch | hfriesen@waters.org        | 1-617-229-5927 | 78129 Lesch Spur Apt. 990                            |
++----+-----------------+----------------------------+----------------+------------------------------------------------------+
+5 rows in set (0.00 sec)
+```
+
+### Working with AWS RDS
