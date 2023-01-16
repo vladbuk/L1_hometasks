@@ -230,3 +230,63 @@ mysql> select * from customers;
 ```
 
 ### Working with AWS RDS
+
+Try to connect to crated AWS RDS instance and create database:
+
+```
+mysql -u admin -p -h homework.co4qzsstu6hv.eu-central-1.rds.amazonaws.com
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.04 sec)
+
+mysql> create database homework;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> grant all privileges on homework.* to 'admin'@'%';
+Query OK, 0 rows affected (0.04 sec)
+
+```
+
+I transferred local database to RDS (through sql dump):
+```
+mysql -u admin -p -h homework.co4qzsstu6hv.eu-central-1.rds.amazonaws.com homework < /tmp/homework.dump.sql
+
+mysql> use homework;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+
+mysql> select name, email from customers;
++-----------------+----------------------------+
+| name            | email                      |
++-----------------+----------------------------+
+| Hope Macejkovic | lynch.ramon@gmail.com      |
+| Vernice Wisoky  | schaden.murl@langworth.com |
+| Rick Greenholt  | elroy96@bahringer.net      |
+| Daija Ortiz     | ardith54@yahoo.com         |
+| Eriberto Wunsch | hfriesen@waters.org        |
++-----------------+----------------------------+
+5 rows in set (0.07 sec)
+```
+
+And now we have to create dump of the RDS database:
+```
+mysqldump -u admin -p -h homework.co4qzsstu6hv.eu-central-1.rds.amazonaws.com homework > /tmp/rds-homework.dump.sql
+
+ll /tmp/rds-homework.dump.sql 
+-rw-rw-r-- 1 ut ut 6.4K Jan 16 20:26 /tmp/rds-homework.dump.sql
+
+```
+
+Everytyng is working fine.
+
