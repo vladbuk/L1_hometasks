@@ -313,33 +313,126 @@ mydb>
 Start to work with mongodb:
 
 ```
-mydb> db.testCollection.insert({"name": "dove", "age" : 26, "email": "test@gmail.com"})
-DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
-{
-  acknowledged: true,
-  insertedIds: { '0': ObjectId("63c65ce3111d23de0b60288c") }
-}
 mydb> db.testCollection.insertOne({"name": "dove", "age" : 26, "email": "test@gmail.com"})
 {
   acknowledged: true,
-  insertedId: ObjectId("63c65d08111d23de0b60288d")
+  insertedId: ObjectId("63c65f1d111d23de0b60288e")
 }
-mydb> db.createCollection("testCollection")
-MongoServerError: Collection mydb.testCollection already exists.
-
 mydb> db.testCollection.find()
 [
   {
-    _id: ObjectId("63c65ce3111d23de0b60288c"),
+    _id: ObjectId("63c65f1d111d23de0b60288e"),
     name: 'dove',
     age: 26,
     email: 'test@gmail.com'
-  },
+  }
+]
+mydb> db.testCollection.deleteOne({});
+{ acknowledged: true, deletedCount: 1 }
+mydb> db.testCollection.find()
+
+mydb> 
+```
+
+Let's add more data:
+
+```
+mydb> db.customers.insertOne({ 'name': 'Hope Macejkovic',
+'email': 'lynch.ramon@gmail.com',
+'phone': '(302) 871-9295',
+'address': '33844 Maymie Dam Apt. 098, Vonborough, West Virginia'
+})
+
+{
+  acknowledged: true,
+  insertedId: ObjectId("63c660b8111d23de0b60288f")
+}
+
+
+mydb> db.customers.find()
+[
   {
-    _id: ObjectId("63c65d08111d23de0b60288d"),
-    name: 'dove',
-    age: 26,
-    email: 'test@gmail.com'
+    _id: ObjectId("63c660b8111d23de0b60288f"),
+    name: 'Hope Macejkovic',
+    email: 'lynch.ramon@gmail.com',
+    phone: '(302) 871-9295',
+    address: '33844 Maymie Dam Apt. 098, Vonborough, West Virginia'
+  }
+]
+
+db.customers.insertMany(
+[{
+"name": "Vernice Wisoky",
+"email": "schaden.murl@langworth.com",
+"phone": "906-717-2201",
+"address": "45608 Craig Junction Suite 776, New Triston"
+},
+{
+"name": "Rick Greenholt",
+"email": "elroy96@bahringer.net",
+"phone": "906-650-9426",
+"address": "8895 Jamarcus River Apt. 543"
+},
+{
+"name": "Daija Ortiz",
+"email": "ardith54@yahoo.com",
+"phone": "965.340.6943",
+"address": "74815 Effertz Springs Apt. 275"
+}])
+
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("63c66274111d23de0b602890"),
+    '1': ObjectId("63c66274111d23de0b602891"),
+    '2': ObjectId("63c66274111d23de0b602892")
+  }
+}
+```
+
+Work with collection
+
+```
+mydb> db.customers.find({"name": "Rick Greenholt"})
+[
+  {
+    _id: ObjectId("63c66274111d23de0b602891"),
+    name: 'Rick Greenholt',
+    email: 'elroy96@bahringer.net',
+    phone: '906-650-9426',
+    address: '8895 Jamarcus River Apt. 543'
+  }
+]
+
+mydb> db.customers.find({"email": /gmail/})
+[
+  {
+    _id: ObjectId("63c660b8111d23de0b60288f"),
+    name: 'Hope Macejkovic',
+    email: 'lynch.ramon@gmail.com',
+    phone: '(302) 871-9295',
+    address: '33844 Maymie Dam Apt. 098, Vonborough, West Virginia'
+  }
+]
+
+
+mydb> db.customers.updateOne({name: "Hope Macejkovic"}, {$set: {email: "Hope.Macejkovic@gmail.com"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+mydb> db.customers.find({"email": /gmail/})
+[
+  {
+    _id: ObjectId("63c660b8111d23de0b60288f"),
+    name: 'Hope Macejkovic',
+    email: 'Hope.Macejkovic@gmail.com',
+    phone: '(302) 871-9295',
+    address: '33844 Maymie Dam Apt. 098, Vonborough, West Virginia'
   }
 ]
 
