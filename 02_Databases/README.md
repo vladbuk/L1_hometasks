@@ -290,3 +290,58 @@ ll /tmp/rds-homework.dump.sql
 
 Everytyng is working fine.
 
+## Part 3. MongoDB
+
+Run mongodb in docker container and connect to it
+
+```
+docker run --name mymongo -d mongo:latest
+docker exec -it mymongo bash
+mongosh
+
+test> db
+test
+test> show databases
+admin    40.00 KiB
+config  108.00 KiB
+local    40.00 KiB
+test> use mydb
+switched to db mydb
+mydb> 
+```
+
+Start to work with mongodb:
+
+```
+mydb> db.testCollection.insert({"name": "dove", "age" : 26, "email": "test@gmail.com"})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("63c65ce3111d23de0b60288c") }
+}
+mydb> db.testCollection.insertOne({"name": "dove", "age" : 26, "email": "test@gmail.com"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("63c65d08111d23de0b60288d")
+}
+mydb> db.createCollection("testCollection")
+MongoServerError: Collection mydb.testCollection already exists.
+
+mydb> db.testCollection.find()
+[
+  {
+    _id: ObjectId("63c65ce3111d23de0b60288c"),
+    name: 'dove',
+    age: 26,
+    email: 'test@gmail.com'
+  },
+  {
+    _id: ObjectId("63c65d08111d23de0b60288d"),
+    name: 'dove',
+    age: 26,
+    email: 'test@gmail.com'
+  }
+]
+
+
+```
