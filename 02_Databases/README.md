@@ -435,6 +435,18 @@ mydb> db.customers.find({"email": /gmail/})
     address: '33844 Maymie Dam Apt. 098, Vonborough, West Virginia'
   }
 ]
+```
 
+Just check what we have done:
+
+```
+mydb> show databases
+admin    40.00 KiB
+config  108.00 KiB
+local    40.00 KiB
+mydb     96.00 KiB
+mydb> show collections
+customers
+testCollection
 
 ```
