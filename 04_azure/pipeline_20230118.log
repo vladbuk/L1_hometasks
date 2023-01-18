@@ -1,0 +1,196 @@
+2023-01-18T18:04:14.1423711Z ##[section]Starting: AzureStaticWebApp
+2023-01-18T18:04:14.1431925Z ==============================================================================
+2023-01-18T18:04:14.1432192Z Task         : Deploy Azure Static Web App
+2023-01-18T18:04:14.1432346Z Description  : [PREVIEW] Build and deploy an Azure Static Web App
+2023-01-18T18:04:14.1432530Z Version      : 0.208.0
+2023-01-18T18:04:14.1432654Z Author       : Microsoft Corporation
+2023-01-18T18:04:14.1432845Z Help         : https://aka.ms/swadocs
+2023-01-18T18:04:14.1432974Z ==============================================================================
+2023-01-18T18:04:14.5738333Z [command]/usr/bin/bash /home/vsts/work/_tasks/AzureStaticWebApp_18aad896-e191-4720-88d6-8ced4806941a/0.208.0/launch-docker.sh
+2023-01-18T18:04:14.9736559Z stable: Pulling from appsvc/staticappsclient
+2023-01-18T18:04:14.9759110Z 6aefca2dc61d: Pulling fs layer
+2023-01-18T18:04:14.9774684Z 967757d56527: Pulling fs layer
+2023-01-18T18:04:14.9794056Z c357e2c68cb3: Pulling fs layer
+2023-01-18T18:04:14.9813476Z c766e27afb21: Pulling fs layer
+2023-01-18T18:04:14.9814592Z d913781da675: Pulling fs layer
+2023-01-18T18:04:14.9818964Z 54fa687f58b4: Pulling fs layer
+2023-01-18T18:04:14.9819999Z c939a09b5983: Pulling fs layer
+2023-01-18T18:04:14.9821893Z e198984d5536: Pulling fs layer
+2023-01-18T18:04:14.9822819Z 21e57609d6b3: Pulling fs layer
+2023-01-18T18:04:14.9823544Z c1881f2146e9: Pulling fs layer
+2023-01-18T18:04:14.9824329Z 4bd05412a8e0: Pulling fs layer
+2023-01-18T18:04:14.9824927Z 8146c9dfd394: Pulling fs layer
+2023-01-18T18:04:14.9826336Z f0ffa7b9e9dc: Pulling fs layer
+2023-01-18T18:04:14.9826977Z 1bdd8cf46ef0: Pulling fs layer
+2023-01-18T18:04:14.9827557Z 4debd1ad733b: Pulling fs layer
+2023-01-18T18:04:14.9828140Z a86c0ae94649: Pulling fs layer
+2023-01-18T18:04:14.9828760Z 0042f3546c1c: Pulling fs layer
+2023-01-18T18:04:14.9829442Z 90a4bb56beee: Pulling fs layer
+2023-01-18T18:04:14.9830271Z c766e27afb21: Waiting
+2023-01-18T18:04:14.9963210Z 54fa687f58b4: Waiting
+2023-01-18T18:04:14.9998959Z c939a09b5983: Waiting
+2023-01-18T18:04:14.9999453Z e198984d5536: Waiting
+2023-01-18T18:04:14.9999731Z 21e57609d6b3: Waiting
+2023-01-18T18:04:15.0000015Z c1881f2146e9: Waiting
+2023-01-18T18:04:15.0000281Z 4bd05412a8e0: Waiting
+2023-01-18T18:04:15.0000546Z 8146c9dfd394: Waiting
+2023-01-18T18:04:15.0000827Z f0ffa7b9e9dc: Waiting
+2023-01-18T18:04:15.0001200Z 1bdd8cf46ef0: Waiting
+2023-01-18T18:04:15.0001468Z 4debd1ad733b: Waiting
+2023-01-18T18:04:15.0001725Z a86c0ae94649: Waiting
+2023-01-18T18:04:15.0001994Z 0042f3546c1c: Waiting
+2023-01-18T18:04:15.0002249Z 90a4bb56beee: Waiting
+2023-01-18T18:04:15.0003018Z d913781da675: Waiting
+2023-01-18T18:04:15.1149049Z c357e2c68cb3: Verifying Checksum
+2023-01-18T18:04:15.1149572Z c357e2c68cb3: Download complete
+2023-01-18T18:04:15.1296763Z 967757d56527: Verifying Checksum
+2023-01-18T18:04:15.1297144Z 967757d56527: Download complete
+2023-01-18T18:04:15.5853956Z 6aefca2dc61d: Verifying Checksum
+2023-01-18T18:04:15.5854692Z 6aefca2dc61d: Download complete
+2023-01-18T18:04:15.8717705Z c766e27afb21: Verifying Checksum
+2023-01-18T18:04:15.8724943Z c766e27afb21: Download complete
+2023-01-18T18:04:15.8915240Z 54fa687f58b4: Verifying Checksum
+2023-01-18T18:04:15.8915949Z 54fa687f58b4: Download complete
+2023-01-18T18:04:15.9950806Z e198984d5536: Verifying Checksum
+2023-01-18T18:04:15.9951835Z e198984d5536: Download complete
+2023-01-18T18:04:16.1774918Z 21e57609d6b3: Verifying Checksum
+2023-01-18T18:04:16.1775326Z 21e57609d6b3: Download complete
+2023-01-18T18:04:16.4125792Z c1881f2146e9: Verifying Checksum
+2023-01-18T18:04:16.4129830Z c1881f2146e9: Download complete
+2023-01-18T18:04:16.5345956Z c939a09b5983: Verifying Checksum
+2023-01-18T18:04:16.5350704Z c939a09b5983: Download complete
+2023-01-18T18:04:16.6204505Z d913781da675: Verifying Checksum
+2023-01-18T18:04:16.6204889Z d913781da675: Download complete
+2023-01-18T18:04:16.7660641Z 4bd05412a8e0: Verifying Checksum
+2023-01-18T18:04:16.7663134Z 4bd05412a8e0: Download complete
+2023-01-18T18:04:16.7672278Z f0ffa7b9e9dc: Verifying Checksum
+2023-01-18T18:04:16.7673086Z f0ffa7b9e9dc: Download complete
+2023-01-18T18:04:17.2708069Z 4debd1ad733b: Verifying Checksum
+2023-01-18T18:04:17.2708432Z 4debd1ad733b: Download complete
+2023-01-18T18:04:17.4416092Z a86c0ae94649: Verifying Checksum
+2023-01-18T18:04:17.4416542Z a86c0ae94649: Download complete
+2023-01-18T18:04:17.5660872Z 1bdd8cf46ef0: Verifying Checksum
+2023-01-18T18:04:17.5661336Z 1bdd8cf46ef0: Download complete
+2023-01-18T18:04:17.5849065Z 0042f3546c1c: Verifying Checksum
+2023-01-18T18:04:17.5850036Z 0042f3546c1c: Download complete
+2023-01-18T18:04:17.6517200Z 90a4bb56beee: Verifying Checksum
+2023-01-18T18:04:17.6533790Z 90a4bb56beee: Download complete
+2023-01-18T18:04:19.1492799Z 8146c9dfd394: Verifying Checksum
+2023-01-18T18:04:19.1493180Z 8146c9dfd394: Download complete
+2023-01-18T18:04:19.8939776Z 6aefca2dc61d: Pull complete
+2023-01-18T18:04:22.2759484Z 967757d56527: Pull complete
+2023-01-18T18:04:22.6438347Z c357e2c68cb3: Pull complete
+2023-01-18T18:04:25.7613996Z c766e27afb21: Pull complete
+2023-01-18T18:04:32.4286637Z d913781da675: Pull complete
+2023-01-18T18:04:32.9237216Z 54fa687f58b4: Pull complete
+2023-01-18T18:04:35.2179478Z c939a09b5983: Pull complete
+2023-01-18T18:04:35.2824515Z e198984d5536: Pull complete
+2023-01-18T18:04:35.4005587Z 21e57609d6b3: Pull complete
+2023-01-18T18:04:35.4871092Z c1881f2146e9: Pull complete
+2023-01-18T18:04:35.5993497Z 4bd05412a8e0: Pull complete
+2023-01-18T18:04:49.3172968Z 8146c9dfd394: Pull complete
+2023-01-18T18:04:49.8503542Z f0ffa7b9e9dc: Pull complete
+2023-01-18T18:04:54.3572987Z 1bdd8cf46ef0: Pull complete
+2023-01-18T18:04:55.2182900Z 4debd1ad733b: Pull complete
+2023-01-18T18:04:55.2854565Z a86c0ae94649: Pull complete
+2023-01-18T18:04:55.3512299Z 0042f3546c1c: Pull complete
+2023-01-18T18:04:55.4091633Z 90a4bb56beee: Pull complete
+2023-01-18T18:04:55.4152691Z Digest: sha256:59770521cc6dd88ef2b858ca5b103a211801ccf714879955fe5e7ee40597a27d
+2023-01-18T18:04:55.4175572Z Status: Downloaded newer image for mcr.microsoft.com/appsvc/staticappsclient:stable
+2023-01-18T18:04:55.8480377Z DeploymentId: afae2a1a-1575-4144-bef5-8ae12154bae0
+2023-01-18T18:04:55.8485073Z 
+2023-01-18T18:04:56.0016402Z [37mApp Directory Location: '/' was found.[0m
+2023-01-18T18:04:56.0021736Z [37mLooking for event info[0m
+2023-01-18T18:04:56.5987196Z [37mStarting to build app with Oryx[0m
+2023-01-18T18:04:56.5988250Z [33mAzure Static Web Apps utilizes Oryx to build both static applications and Azure Functions. You can find more details on Oryx here: https://github.com/microsoft/Oryx[0m
+2023-01-18T18:04:56.5989113Z [37m---Oryx build logs---[0m
+2023-01-18T18:04:56.5989661Z [37m[0m
+2023-01-18T18:04:56.5989929Z [37m[0m
+2023-01-18T18:04:57.1000069Z [37mOperation performed by Microsoft Oryx, https://github.com/Microsoft/Oryx[0m
+2023-01-18T18:04:57.1000963Z [37mYou can report issues at https://github.com/Microsoft/Oryx/issues[0m
+2023-01-18T18:04:57.1001394Z [37m[0m
+2023-01-18T18:04:57.1001994Z [37mOryx Version: 0.2.20221103.1, Commit: a2c65dde152b749fea395f4d1242ea9350942258, ReleaseTagName: 20221103.1[0m
+2023-01-18T18:04:57.1002520Z [37m[0m
+2023-01-18T18:04:57.1002915Z [37mBuild Operation ID: |ImxgZGRScXg=.75fc03c8_[0m
+2023-01-18T18:04:57.1003467Z [37mRepository Commit : 9c7735b40da1456bafefe1c89cec24a02a294c75[0m
+2023-01-18T18:04:57.1003859Z [37m[0m
+2023-01-18T18:04:57.1315962Z [37mDetecting platforms...[0m
+2023-01-18T18:04:59.0129254Z [37mDetected following platforms:[0m
+2023-01-18T18:04:59.0132414Z [37m  nodejs: 16.18.0[0m
+2023-01-18T18:04:59.0210270Z [37mVersion '16.18.0' of platform 'nodejs' is not installed. Generating script to install it...[0m
+2023-01-18T18:04:59.0902506Z [37mDetected the following frameworks: Nuxt.js[0m
+2023-01-18T18:04:59.2249919Z [37m[0m
+2023-01-18T18:04:59.2321693Z [37m[0m
+2023-01-18T18:04:59.2345699Z [37mSource directory     : /working_dir[0m
+2023-01-18T18:04:59.2346251Z [37mDestination directory: /afae2a1a-1575-4144-bef5-8ae12154bae0-swa-oryx/app[0m
+2023-01-18T18:04:59.2346665Z [37m[0m
+2023-01-18T18:04:59.2346893Z [37m[0m
+2023-01-18T18:04:59.2347643Z [37mDownloading and extracting 'nodejs' version '16.18.0' to '/opt/nodejs/16.18.0'...[0m
+2023-01-18T18:04:59.2366206Z [37mDetected image debian flavor: bullseye.[0m
+2023-01-18T18:04:59.4602348Z [37mDownloaded in 0 sec(s).[0m
+2023-01-18T18:04:59.4602837Z [37mVerifying checksum...[0m
+2023-01-18T18:04:59.4701320Z [37mExtracting contents...[0m
+2023-01-18T18:05:00.4058127Z [37mperforming sha512 checksum for: nodejs...[0m
+2023-01-18T18:05:00.5491044Z [37mDone in 1 sec(s).[0m
+2023-01-18T18:05:00.5491475Z [37m[0m
+2023-01-18T18:05:00.6187826Z [37mRemoving existing manifest file[0m
+2023-01-18T18:05:00.6188364Z [37mCreating directory for command manifest file if it does not exist[0m
+2023-01-18T18:05:00.6224419Z [37mCreating a manifest file...[0m
+2023-01-18T18:05:00.6224838Z [37mNode Build Command Manifest file created.[0m
+2023-01-18T18:05:00.6225469Z [37m[0m
+2023-01-18T18:05:00.6225789Z [37mUsing Node version:[0m
+2023-01-18T18:05:00.6260608Z [37mv16.18.0[0m
+2023-01-18T18:05:00.6276225Z [37m[0m
+2023-01-18T18:05:00.6276746Z [37mUsing Yarn version:[0m
+2023-01-18T18:05:00.9972284Z [37m1.22.15[0m
+2023-01-18T18:05:01.0069525Z [37m[0m
+2023-01-18T18:05:01.0069958Z [37mRunning 'yarn install --prefer-offline'...[0m
+2023-01-18T18:05:01.0070275Z [37m[0m
+2023-01-18T18:05:01.1884772Z [37myarn install v1.22.15[0m
+2023-01-18T18:05:01.2965154Z [31mwarning package-lock.json found. Your project contains lock files generated by tools other than Yarn. It is advised not to mix package managers in order to avoid resolution inconsistencies caused by unsynchronized lock files. To clear this warning, remove package-lock.json.[0m
+2023-01-18T18:05:01.2990488Z [37m[1/4] Resolving packages...[0m
+2023-01-18T18:05:01.8161656Z [37m[2/4] Fetching packages...[0m
+2023-01-18T18:05:16.2177073Z [37minfo fsevents@2.3.2: The platform "linux" is incompatible with this module.[0m
+2023-01-18T18:05:16.2184092Z [37minfo "fsevents@2.3.2" is an optional dependency and failed compatibility check. Excluding it from installation.[0m
+2023-01-18T18:05:16.2374899Z [37minfo fsevents@1.2.13: The platform "linux" is incompatible with this module.[0m
+2023-01-18T18:05:16.2380408Z [37minfo "fsevents@1.2.13" is an optional dependency and failed compatibility check. Excluding it from installation.[0m
+2023-01-18T18:05:16.2406716Z [37m[3/4] Linking dependencies...[0m
+2023-01-18T18:05:16.2449127Z [31mwarning "nuxt > @nuxt/components@2.2.1" has unmet peer dependency "consola@*".[0m
+2023-01-18T18:05:22.4404189Z [37m[4/4] Building fresh packages...[0m
+2023-01-18T18:05:37.6927998Z [37mDone in 36.51s.[0m
+2023-01-18T18:05:37.7172743Z [37m[0m
+2023-01-18T18:05:37.7176441Z [37mRunning 'yarn run build'...[0m
+2023-01-18T18:05:37.7177262Z [37m[0m
+2023-01-18T18:05:37.8967343Z [37myarn run v1.22.15[0m
+2023-01-18T18:05:37.9478212Z [37m$ nuxt generate[0m
+2023-01-18T18:05:38.5175342Z [31m[warn] When using `nuxt generate`, you should set `target: 'static'` in your `nuxt.config`[0m
+2023-01-18T18:05:38.5176404Z [31m       👉 Learn more about it on https://go.nuxtjs.dev/static-target[0m
+2023-01-18T18:05:50.6885911Z [37mDone in 12.80s.[0m
+2023-01-18T18:05:50.6963878Z [37mPreparing output...[0m
+2023-01-18T18:05:50.6964257Z [37m[0m
+2023-01-18T18:05:50.6964738Z [37mCopying files to destination directory '/afae2a1a-1575-4144-bef5-8ae12154bae0-swa-oryx/app'...[0m
+2023-01-18T18:05:52.8231275Z [37mDone in 2 sec(s).[0m
+2023-01-18T18:05:52.8261333Z [37m[0m
+2023-01-18T18:05:52.8261796Z [37mRemoving existing manifest file[0m
+2023-01-18T18:05:52.8282707Z [37mCreating a manifest file...[0m
+2023-01-18T18:05:52.8288722Z [37mManifest file created.[0m
+2023-01-18T18:05:52.8294578Z [37mCopying .ostype to manifest output directory.[0m
+2023-01-18T18:05:52.8311771Z [37m[0m
+2023-01-18T18:05:52.8312267Z [37mDone in 53 sec(s).[0m
+2023-01-18T18:05:52.8882618Z [37m[0m
+2023-01-18T18:05:52.8883617Z [37m[0m
+2023-01-18T18:05:52.8885149Z [37m---End of Oryx build logs---[0m
+2023-01-18T18:05:52.8886046Z [37mFinished building app with Oryx[0m
+2023-01-18T18:05:52.9009528Z [37mNo Api directory specified. Azure Functions will not be created.[0m
+2023-01-18T18:05:53.2758907Z [33mEither no Api directory was specified, or the specified directory was not found. Azure Functions will not be created.[0m
+2023-01-18T18:05:53.4605368Z [37mZipping App Artifacts[0m
+2023-01-18T18:05:53.4801250Z [37mDone Zipping App Artifacts[0m
+2023-01-18T18:05:53.4801995Z [37mUploading build artifacts.[0m
+2023-01-18T18:05:53.8345891Z [32mFinished Upload. Polling on deployment.[0m
+2023-01-18T18:05:53.8919204Z [37mStatus: InProgress. Time: 0.0574943(s)[0m
+2023-01-18T18:06:08.9384838Z [37mStatus: Succeeded. Time: 15.0994027(s)[0m
+2023-01-18T18:06:08.9385459Z [32mDeployment Complete :)[0m
+2023-01-18T18:06:08.9386119Z [32mVisit your site at: https://orange-dune-0bbed7d03.2.azurestaticapps.net[0m
+2023-01-18T18:06:08.9694968Z [37mThanks for using Azure Static Web Apps![0m
+2023-01-18T18:06:08.9695320Z [37mExiting[0m
+2023-01-18T18:06:09.3881891Z ##[section]Finishing: AzureStaticWebApp
