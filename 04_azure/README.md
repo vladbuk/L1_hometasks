@@ -10,6 +10,8 @@ Pipeline yaml: https://github.com/vladbuk/L1_hometasks/blob/main/04_azure/azure-
 
 Pipeline log: https://github.com/vladbuk/L1_hometasks/blob/main/04_azure/pipeline_20230118.log
 
+Unfortunately, this is not an accurate version of the original task. I've used a simple Javascript project. The pipeline creates a static website folder, which is deployed to the Azure Static Web App.
+
 ### A few screenshots from Azure web console
 ###
 
