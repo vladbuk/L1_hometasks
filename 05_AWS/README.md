@@ -32,8 +32,8 @@ In my job and during learning I've met with (ordered by frequent of use):
 - Key-Management-Service
 - Command-Line-Interface
 - CloudFront
-- Lightsail- 
-- WorkSpaces- 
+- Lightsail
+- WorkSpaces
 - Fargate
 - Cloud9
 
