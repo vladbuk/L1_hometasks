@@ -2394,6 +2394,15 @@ input, select, textarea {
 				width: 100%;
 			}
 
+			.image.fit.svg img {
+				width: 50%;
+			}
+
+			.image.fit.svg {
+				height: 10em;
+				align-items: center;
+			}
+
 /* List */
 
 	ol {
