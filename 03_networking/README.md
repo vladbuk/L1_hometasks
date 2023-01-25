@@ -152,6 +152,7 @@ PING 192.168.0.201 (192.168.0.201) 56(84) bytes of data.
 --- 192.168.0.201 ping statistics ---
 3 packets transmitted, 3 received, 0% packet loss, time 2304ms
 rtt min/avg/max/mdev = 0.230/0.336/0.446/0.089 ms
+
 ubuntu@client_1:~$ traceroute 192.168.0.201
 traceroute to 192.168.0.201 (192.168.0.201), 64 hops max
   1   192.168.0.201  0.157ms  0.330ms  0.298ms
@@ -236,7 +237,18 @@ traceroute to 172.16.22.10 (172.16.22.10), 64 hops max
   1   172.16.22.10  0.263ms  0.230ms  0.246ms
 ```
 
+## Task 4: On client1 add two IP to lo and configure particular routes
 
-ip route add 172.17.42.0/24 via 172.16.22.10
-on server1
-ip route add 172.17.32.0/24 via 10.72.22.20
+To solve this task I ran commands:
+
+```
+# lo:10 172.17.32.1/24
+sudo ip addr add 172.17.32.1/24 dev lo label lo:10
+# lo:20 172.17.42.1/24
+sudo ip addr add 172.17.42.1/24 dev lo label lo:20
+```
+
+And routes:
+on client1: `ip route add 172.17.42.0/24 via 172.16.22.10`
+on server1: `ip route add 172.17.32.0/24 via 10.72.22.21`
+```
