@@ -36,6 +36,8 @@ network:
         - vm.dom
   version: 2
 ```
+<a href="https://litprinz-hometask.s3.eu-central-1.amazonaws.com/networking/VirtualBox_Server_1_24_01_2023_21_41_49.png"><img src="https://litprinz-hometask.s3.eu-central-1.amazonaws.com/networking/VirtualBox_Server_1_24_01_2023_21_41_49.png" alt="Server 1" width="480"/></a>
+
 After apply netplan I've got three network interfaces with IP addresses:
 
 enp0s3: 192.168.0.201/24
@@ -89,11 +91,15 @@ enp0s3: 10.72.22.10/24 (DHCP)
 
 enp0s8: 172.16.22.10/24 (Static)
 
+<a href="https://litprinz-hometask.s3.eu-central-1.amazonaws.com/networking/VirtualBox_Client_1_24_01_2023_21_47_47.png"><img src="https://litprinz-hometask.s3.eu-central-1.amazonaws.com/networking/VirtualBox_Client_1_24_01_2023_21_47_47.png" alt="Client 1" width="480"/></a>
+
 **client2**
 
 enp0s3: 10.10.72.21/24 (DHCP
 
 enp0s8: 172.16.22.20 (Static)
+
+<a href="https://litprinz-hometask.s3.eu-central-1.amazonaws.com/networking/VirtualBox_Client_2_25_01_2023_14_27_14.png"><img src="https://litprinz-hometask.s3.eu-central-1.amazonaws.com/networking/VirtualBox_Client_2_25_01_2023_14_27_14.png" alt="Client 2" width="480"/></a>
 
 **WiFi Router in home network**
 
