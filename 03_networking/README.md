@@ -371,3 +371,9 @@ Chain POSTROUTING (policy ACCEPT 0 packets, 0 bytes)
 
 Let's try ping any internet host from client1:
 
+<a href="https://litprinz-hometask.s3.eu-central-1.amazonaws.com/networking/VirtualBox_Client_1_ping-through-nat.png"><img src="https://litprinz-hometask.s3.eu-central-1.amazonaws.com/networking/VirtualBox_Client_1_ping-through-nat.png" alt="Client 1 ping through nat" width="480"/></a>
+
+And client2:
+
+<a href="https://litprinz-hometask.s3.eu-central-1.amazonaws.com/networking/VirtualBox_Client_2_ping-through-nat.png"><img src="https://litprinz-hometask.s3.eu-central-1.amazonaws.com/networking/VirtualBox_Client_2_ping-through-nat.png" alt="Client 2 ping through nat" width="480"/></a>
+
