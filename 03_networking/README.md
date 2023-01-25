@@ -36,7 +36,7 @@ network:
         - vm.dom
   version: 2
 ```
-After apply netplan I got three netwokr interfacec with IP addresses:
+After apply netplan I've got three network interfaces with IP addresses:
 
 enp0s3: 192.168.0.201/24
 
@@ -81,6 +81,7 @@ To provide tcp packets transport through server1 I enabled ip forwarding:
 sysctl net.ipv4.ip_forward
 sudo sysctl -w net.ipv4.ip_forward=1
 ```
+### Other VM's network parameters:
 
 **client1**
 
@@ -104,7 +105,42 @@ Additional static routes:
 
 10.10.72.0	mask 255.255.255.0	via 192.168.0.201
 
-## Task 1: 
+## Task 3: Testing connection between virtual machines
+
+From server1:
+
+```
+ubuntu@server1:/etc/netplan$ ping -c 3 10.72.22.10
+PING 10.72.22.10 (10.72.22.10) 56(84) bytes of data.
+64 bytes from 10.72.22.10: icmp_seq=1 ttl=64 time=0.398 ms
+64 bytes from 10.72.22.10: icmp_seq=2 ttl=64 time=0.355 ms
+64 bytes from 10.72.22.10: icmp_seq=3 ttl=64 time=0.339 ms
+
+--- 10.72.22.10 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2033ms
+rtt min/avg/max/mdev = 0.339/0.364/0.398/0.024 ms
+ubuntu@server1:/etc/netplan$ traceroute 10.72.22.10
+traceroute to 10.72.22.10 (10.72.22.10), 64 hops max
+  1   10.72.22.10  0.258ms  0.305ms  0.260ms
+ubuntu@server1:/etc/netplan$
+
+
+ubuntu@server1:/etc/netplan$ ping -c 3 10.10.72.20
+PING 10.10.72.20 (10.10.72.20) 56(84) bytes of data.
+64 bytes from 10.10.72.20: icmp_seq=1 ttl=64 time=0.493 ms
+64 bytes from 10.10.72.20: icmp_seq=2 ttl=64 time=0.400 ms
+64 bytes from 10.10.72.20: icmp_seq=3 ttl=64 time=0.589 ms
+
+--- 10.10.72.20 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2115ms
+rtt min/avg/max/mdev = 0.400/0.494/0.589/0.077 ms
+ubuntu@server1:/etc/netplan$ traceroute 10.10.72.20
+traceroute to 10.10.72.20 (10.10.72.20), 64 hops max
+  1   10.10.72.20  0.423ms !*  0.234ms !*  0.255ms !*
+```
+
+
+
 
 ip route add 172.17.42.0/24 via 172.16.22.10
 on server1
