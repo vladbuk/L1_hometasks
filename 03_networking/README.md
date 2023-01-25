@@ -169,6 +169,21 @@ rtt min/avg/max/mdev = 0.300/0.331/0.380/0.037 ms
 [root@client2 ~]# traceroute 192.168.0.201
 traceroute to 192.168.0.201 (192.168.0.201), 30 hops max, 60 byte packets
  1  192.168.0.201 (192.168.0.201)  0.252 ms  0.199 ms  0.224 ms
+ 
+ 
+[root@client2 ~]# ping -c 3 10.72.22.10
+PING 10.72.22.10 (10.72.22.10) 56(84) bytes of data.
+64 bytes from 10.72.22.10: icmp_seq=1 ttl=63 time=0.703 ms
+64 bytes from 10.72.22.10: icmp_seq=2 ttl=63 time=1.12 ms
+64 bytes from 10.72.22.10: icmp_seq=3 ttl=63 time=0.698 ms
+
+--- 10.72.22.10 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 0.698/0.843/1.129/0.203 ms
+[root@client2 ~]# traceroute 10.72.22.10
+traceroute to 10.72.22.10 (10.72.22.10), 30 hops max, 60 byte packets
+ 1  gateway (10.10.72.1)  0.293 ms  0.209 ms  0.199 ms
+ 2  10.72.22.10 (10.72.22.10)  0.581 ms  0.953 ms  0.948 ms
 ```
 
 
