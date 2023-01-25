@@ -139,7 +139,37 @@ traceroute to 10.10.72.20 (10.10.72.20), 64 hops max
   1   10.10.72.20  0.423ms !*  0.234ms !*  0.255ms !*
 ```
 
+From client1:
+```
+ubuntu@client_1:~$ ping -c 3 192.168.0.201
+PING 192.168.0.201 (192.168.0.201) 56(84) bytes of data.
+64 bytes from 192.168.0.201: icmp_seq=1 ttl=64 time=0.230 ms
+64 bytes from 192.168.0.201: icmp_seq=2 ttl=64 time=0.333 ms
+64 bytes from 192.168.0.201: icmp_seq=3 ttl=64 time=0.446 ms
 
+--- 192.168.0.201 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2304ms
+rtt min/avg/max/mdev = 0.230/0.336/0.446/0.089 ms
+ubuntu@client_1:~$ traceroute 192.168.0.201
+traceroute to 192.168.0.201 (192.168.0.201), 64 hops max
+  1   192.168.0.201  0.157ms  0.330ms  0.298ms
+```
+
+From client2 (CentOS 7):
+```
+[root@client2 ~]# ping -c 3 192.168.0.201
+PING 192.168.0.201 (192.168.0.201) 56(84) bytes of data.
+64 bytes from 192.168.0.201: icmp_seq=1 ttl=64 time=0.300 ms
+64 bytes from 192.168.0.201: icmp_seq=2 ttl=64 time=0.380 ms
+64 bytes from 192.168.0.201: icmp_seq=3 ttl=64 time=0.314 ms
+
+--- 192.168.0.201 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2000ms
+rtt min/avg/max/mdev = 0.300/0.331/0.380/0.037 ms
+[root@client2 ~]# traceroute 192.168.0.201
+traceroute to 192.168.0.201 (192.168.0.201), 30 hops max, 60 byte packets
+ 1  192.168.0.201 (192.168.0.201)  0.252 ms  0.199 ms  0.224 ms
+```
 
 
 ip route add 172.17.42.0/24 via 172.16.22.10
