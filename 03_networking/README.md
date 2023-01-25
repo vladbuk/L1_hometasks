@@ -5,12 +5,18 @@
 ## Initial configuration
 
 **server1**
+
 enp0s3: 192.168.0.201/24
+
 enp0s8: 10.72.22.1/24
+
 enp0s9: 10.10.72.1/24
 
+To provide tcp packets transport through server1 we have to enable ip forwarding:
+```
 sysctl net.ipv4.ip_forward
 sudo sysctl -w net.ipv4.ip_forward=1
+```
 
 **client1**
 lo:10 172.17.32.1/24
