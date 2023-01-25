@@ -315,7 +315,7 @@ Everything also works fine. SSH works very well from the box.
 
 ## Task 7: Configuring firewall
 
-On server1 `sudo iptables -A INPUT -i enp0s9 -p tcp --dport 22 -j DROP`
+On **server1** `sudo iptables -A INPUT -i enp0s9 -p tcp --dport 22 -j DROP`
 ```
 ubuntu@server1:~$ sudo iptables -L -v
 Chain INPUT (policy ACCEPT 508 packets, 36394 bytes)
@@ -334,8 +334,17 @@ debug1: connect to address 192.168.0.201 port 22: Connection timed out
 ssh: connect to host 192.168.0.201 port 22: Connection timed out
 ```
 
-Also on server1 we have a corresponging items in log:
+On **client1** `sudo iptables -A INPUT -i lo:20 -p icmp -j DROP`
 
+We have got this rule:
+```
+ubuntu@client_1:~$ sudo iptables -L -v
+Chain INPUT (policy ACCEPT 44 packets, 2552 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 DROP       icmp --  lo:20  any     anywhere             anywhere
+```
+
+And ping from client2 to 172.17.42.1 doedn't works.
 ```
 
 ```
