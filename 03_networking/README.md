@@ -2,7 +2,41 @@
 
 ## Task 1: configure static IP on server1
 
-**server1**
+To solve this task I configured netplan editing file `/etc/netplan/00-installer-config.yaml`:
+```
+network:
+  ethernets:
+    enp0s3:
+      addresses:
+      - 192.168.0.201/24
+      gateway4: 192.168.0.1
+      nameservers:
+        addresses:
+        - 8.8.8.8
+        - 8.8.4.4
+        search:
+        - vm.dom
+    enp0s8:
+      addresses:
+      - 10.72.22.1/24
+      #gateway4: 10.72.22.1
+      nameservers:
+        addresses:
+        - 10.72.22.1
+        search:
+        - vm.dom
+    enp0s9:
+      addresses:
+      - 10.10.72.1/24
+      #gateway4: 10.10.72.1
+      nameservers:
+        addresses:
+        - 10.10.72.1
+        search:
+        - vm.dom
+  version: 2
+```
+After apply netplan I got three netwokr interfacec with IP addresses:
 
 enp0s3: 192.168.0.201/24
 
@@ -12,7 +46,12 @@ enp0s9: 10.10.72.1/24
 
 ## Task 2: setup DHCP service on server1
 
-I added these strings to /etc/dhcp/dhcpd.conf:
+I installed DHCP server running command:
+```
+sudo apt install isc-dhcp-server
+```
+
+Then I added these strings to /etc/dhcp/dhcpd.conf:
 
 ```
 subnet 10.72.22.0 netmask 255.255.255.0 {
@@ -30,6 +69,11 @@ subnet 10.10.72.0 netmask 255.255.255.0 {
   option domain-name-servers 192.168.0.1, 8.8.8.8;
   option domain-name "vm.dom";
 }
+```
+
+And restart DHCP service:
+```
+sudo systemctl restart isc-dhcp-server.service
 ```
 
 To provide tcp packets transport through server1 I enabled ip forwarding:
