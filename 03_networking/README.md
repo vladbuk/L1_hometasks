@@ -297,7 +297,7 @@ traceroute to 172.17.42.1 (172.17.42.1), 64 hops max
   2   172.17.42.1  0.682ms  0.329ms  0.276ms
 ```
 
-## Task 6: Configure SSH
+## Task 6: Configuring SSH
 
 Trying from client1:
 ```
@@ -312,3 +312,30 @@ ssh ubuntu@192.168.0.201
 ssh ubuntu@10.72.22.10
 ```
 Everything also works fine. SSH works very well from the box.
+
+## Task 7: Configuring firewall
+
+On server1 `sudo iptables -A INPUT -i enp0s9 -p tcp --dport 22 -j DROP`
+```
+ubuntu@server1:~$ sudo iptables -L -v
+Chain INPUT (policy ACCEPT 508 packets, 36394 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 DROP       tcp  --  enp0s9 any     anywhere             anywhere             tcp dpt:ssh
+```
+
+After that we can still connect to server1 from client1 but can't connect to it from client2.
+```
+ubuntu@client2:~$ ssh -v ubuntu@192.168.0.201
+OpenSSH_7.6p1 Ubuntu-4ubuntu0.7, OpenSSL 1.0.2n  7 Dec 2017
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: /etc/ssh/ssh_config line 19: Applying options for *
+debug1: Connecting to 192.168.0.201 [192.168.0.201] port 22.
+debug1: connect to address 192.168.0.201 port 22: Connection timed out
+ssh: connect to host 192.168.0.201 port 22: Connection timed out
+```
+
+Also on server1 we have a corresponging items in log:
+
+```
+
+```
