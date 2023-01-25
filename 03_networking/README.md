@@ -355,3 +355,19 @@ From 172.17.42.1 icmp_seq=3 Destination Port Unreachable
 --- 172.17.42.1 ping statistics ---
 3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 2307ms
 ```
+
+## Task 8: Configuring NAT
+
+On server1 run: `sudo iptables -t nat -A POSTROUTING -j MASQUERADE`
+
+Check iptables:
+```
+ubuntu@server1:~$ sudo iptables -t nat -L -v
+
+Chain POSTROUTING (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+   26  1854 MASQUERADE  all  --  any    any     anywhere             anywhere
+```
+
+Let's try ping any internet host from client1:
+
