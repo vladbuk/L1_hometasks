@@ -91,7 +91,7 @@ enp0s8: 172.16.22.10/24 (Static)
 
 **client2**
 
-enp0s3: 10.10.72.20/24 (DHCP
+enp0s3: 10.10.72.21/24 (DHCP
 
 enp0s8: 172.16.22.20 (Static)
 
@@ -119,24 +119,26 @@ PING 10.72.22.10 (10.72.22.10) 56(84) bytes of data.
 --- 10.72.22.10 ping statistics ---
 3 packets transmitted, 3 received, 0% packet loss, time 2033ms
 rtt min/avg/max/mdev = 0.339/0.364/0.398/0.024 ms
+
 ubuntu@server1:/etc/netplan$ traceroute 10.72.22.10
 traceroute to 10.72.22.10 (10.72.22.10), 64 hops max
   1   10.72.22.10  0.258ms  0.305ms  0.260ms
 ubuntu@server1:/etc/netplan$
 
 
-ubuntu@server1:/etc/netplan$ ping -c 3 10.10.72.20
-PING 10.10.72.20 (10.10.72.20) 56(84) bytes of data.
-64 bytes from 10.10.72.20: icmp_seq=1 ttl=64 time=0.493 ms
-64 bytes from 10.10.72.20: icmp_seq=2 ttl=64 time=0.400 ms
-64 bytes from 10.10.72.20: icmp_seq=3 ttl=64 time=0.589 ms
+ubuntu@server1:/etc/dhcp$ ping -c 3 10.10.72.21
+PING 10.10.72.21 (10.10.72.21) 56(84) bytes of data.
+64 bytes from 10.10.72.21: icmp_seq=1 ttl=64 time=0.291 ms
+64 bytes from 10.10.72.21: icmp_seq=2 ttl=64 time=0.358 ms
+64 bytes from 10.10.72.21: icmp_seq=3 ttl=64 time=0.379 ms
 
---- 10.10.72.20 ping statistics ---
-3 packets transmitted, 3 received, 0% packet loss, time 2115ms
-rtt min/avg/max/mdev = 0.400/0.494/0.589/0.077 ms
-ubuntu@server1:/etc/netplan$ traceroute 10.10.72.20
-traceroute to 10.10.72.20 (10.10.72.20), 64 hops max
-  1   10.10.72.20  0.423ms !*  0.234ms !*  0.255ms !*
+--- 10.10.72.21 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2025ms
+rtt min/avg/max/mdev = 0.291/0.342/0.379/0.037 ms
+
+ubuntu@server1:/etc/dhcp$ traceroute 10.10.72.21
+traceroute to 10.10.72.21 (10.10.72.21), 64 hops max
+  1   10.10.72.21  0.423ms  0.261ms  0.255ms
 ```
 
 From client1:
@@ -153,37 +155,85 @@ rtt min/avg/max/mdev = 0.230/0.336/0.446/0.089 ms
 ubuntu@client_1:~$ traceroute 192.168.0.201
 traceroute to 192.168.0.201 (192.168.0.201), 64 hops max
   1   192.168.0.201  0.157ms  0.330ms  0.298ms
+  
+
+ubuntu@client_1:~$  ping -c 3 10.10.72.21
+PING 10.10.72.21 (10.10.72.21) 56(84) bytes of data.
+64 bytes from 10.10.72.21: icmp_seq=1 ttl=63 time=0.561 ms
+64 bytes from 10.10.72.21: icmp_seq=2 ttl=63 time=0.648 ms
+64 bytes from 10.10.72.21: icmp_seq=3 ttl=63 time=0.615 ms
+
+--- 10.10.72.21 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2026ms
+rtt min/avg/max/mdev = 0.561/0.608/0.648/0.035 ms
+
+ubuntu@client_1:~$ traceroute 10.10.72.21
+traceroute to 10.10.72.21 (10.10.72.21), 64 hops max
+  1   10.72.22.1  0.164ms  0.155ms  0.174ms
+  2   10.10.72.21  0.552ms  0.386ms  0.351ms
+
+
+ubuntu@client_1:~$ ping -c 3 172.16.22.20
+PING 172.16.22.20 (172.16.22.20) 56(84) bytes of data.
+64 bytes from 172.16.22.20: icmp_seq=1 ttl=64 time=0.632 ms
+64 bytes from 172.16.22.20: icmp_seq=2 ttl=64 time=0.346 ms
+64 bytes from 172.16.22.20: icmp_seq=3 ttl=64 time=1.08 ms
+
+--- 172.16.22.20 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2079ms
+rtt min/avg/max/mdev = 0.346/0.688/1.087/0.305 ms
+
+ubuntu@client_1:~$ traceroute 172.16.22.20
+traceroute to 172.16.22.20 (172.16.22.20), 64 hops max
+  1   172.16.22.20  0.259ms  0.219ms  0.218ms
 ```
 
-From client2 (CentOS 7):
+From client2:
 ```
-[root@client2 ~]# ping -c 3 192.168.0.201
+ubuntu@client2:~$ ping -c 3 192.168.0.201
 PING 192.168.0.201 (192.168.0.201) 56(84) bytes of data.
-64 bytes from 192.168.0.201: icmp_seq=1 ttl=64 time=0.300 ms
-64 bytes from 192.168.0.201: icmp_seq=2 ttl=64 time=0.380 ms
-64 bytes from 192.168.0.201: icmp_seq=3 ttl=64 time=0.314 ms
+64 bytes from 192.168.0.201: icmp_seq=1 ttl=64 time=0.411 ms
+64 bytes from 192.168.0.201: icmp_seq=2 ttl=64 time=0.652 ms
+64 bytes from 192.168.0.201: icmp_seq=3 ttl=64 time=0.299 ms
 
 --- 192.168.0.201 ping statistics ---
-3 packets transmitted, 3 received, 0% packet loss, time 2000ms
-rtt min/avg/max/mdev = 0.300/0.331/0.380/0.037 ms
-[root@client2 ~]# traceroute 192.168.0.201
-traceroute to 192.168.0.201 (192.168.0.201), 30 hops max, 60 byte packets
- 1  192.168.0.201 (192.168.0.201)  0.252 ms  0.199 ms  0.224 ms
+3 packets transmitted, 3 received, 0% packet loss, time 2083ms
+rtt min/avg/max/mdev = 0.299/0.454/0.652/0.147 ms
+
+ubuntu@client2:~$ traceroute 192.168.0.201
+traceroute to 192.168.0.201 (192.168.0.201), 64 hops max
+  1   192.168.0.201  0.182ms  0.219ms  0.208ms
  
  
-[root@client2 ~]# ping -c 3 10.72.22.10
+ubuntu@client2:~$ ping -c 3 10.72.22.10
 PING 10.72.22.10 (10.72.22.10) 56(84) bytes of data.
-64 bytes from 10.72.22.10: icmp_seq=1 ttl=63 time=0.703 ms
-64 bytes from 10.72.22.10: icmp_seq=2 ttl=63 time=1.12 ms
-64 bytes from 10.72.22.10: icmp_seq=3 ttl=63 time=0.698 ms
+64 bytes from 10.72.22.10: icmp_seq=1 ttl=63 time=0.464 ms
+64 bytes from 10.72.22.10: icmp_seq=2 ttl=63 time=0.590 ms
+64 bytes from 10.72.22.10: icmp_seq=3 ttl=63 time=0.542 ms
 
 --- 10.72.22.10 ping statistics ---
-3 packets transmitted, 3 received, 0% packet loss, time 2002ms
-rtt min/avg/max/mdev = 0.698/0.843/1.129/0.203 ms
-[root@client2 ~]# traceroute 10.72.22.10
-traceroute to 10.72.22.10 (10.72.22.10), 30 hops max, 60 byte packets
- 1  gateway (10.10.72.1)  0.293 ms  0.209 ms  0.199 ms
- 2  10.72.22.10 (10.72.22.10)  0.581 ms  0.953 ms  0.948 ms
+3 packets transmitted, 3 received, 0% packet loss, time 2152ms
+rtt min/avg/max/mdev = 0.464/0.532/0.590/0.051 ms
+
+ubuntu@client2:~$ traceroute 10.72.22.10
+traceroute to 10.72.22.10 (10.72.22.10), 64 hops max
+  1   10.10.72.1  0.237ms  0.298ms  0.270ms
+  2   10.72.22.10  0.659ms  0.446ms  0.459ms
+
+
+ubuntu@client2:~$ ping -c 3 172.16.22.10
+PING 172.16.22.10 (172.16.22.10) 56(84) bytes of data.
+64 bytes from 172.16.22.10: icmp_seq=1 ttl=64 time=0.256 ms
+64 bytes from 172.16.22.10: icmp_seq=2 ttl=64 time=1.03 ms
+64 bytes from 172.16.22.10: icmp_seq=3 ttl=64 time=0.298 ms
+
+--- 172.16.22.10 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2034ms
+rtt min/avg/max/mdev = 0.256/0.528/1.031/0.356 ms
+
+ubuntu@client2:~$ traceroute 172.16.22.10
+traceroute to 172.16.22.10 (172.16.22.10), 64 hops max
+  1   172.16.22.10  0.263ms  0.230ms  0.246ms
 ```
 
 
