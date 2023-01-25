@@ -266,3 +266,33 @@ ubuntu@client2:~$ traceroute 172.17.42.1
 traceroute to 172.17.42.1 (172.17.42.1), 64 hops max
   1   172.17.42.1  0.296ms  0.165ms  0.196ms
 ```
+
+## Task 5: Route sammarization
+
+Convert network addresses to binary system:
+
+```
+172.17.32.0 = 10101100.00010001.00100000.00000000
+172.17.42.0 = 10101100.00010001.00101010.00000000
+```
+
+Now сount the number of identical digits:
+
+10101100.00010001.0010 =  **20** - This is summarizing prefix (netmask 255.255.240.0)
+
+**Result (summarizing network or route): 172.17.32.0/20**
+
+To add this route I used on client2: `sudo ip route add 172.17.32.0/20 via 10.10.72.1`
+
+Lets check:
+```
+ubuntu@client2:~$ traceroute 172.17.32.1
+traceroute to 172.17.32.1 (172.17.32.1), 64 hops max
+  1   10.10.72.1  0.356ms  0.182ms  0.280ms
+  2   172.17.32.1  0.460ms  0.385ms  0.374ms
+
+ubuntu@client2:~$ traceroute 172.17.42.1
+traceroute to 172.17.42.1 (172.17.42.1), 64 hops max
+  1   10.10.72.1  0.192ms  0.328ms  0.157ms
+  2   172.17.42.1  0.682ms  0.329ms  0.276ms
+```
