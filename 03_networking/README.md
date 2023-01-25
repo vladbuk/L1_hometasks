@@ -334,17 +334,24 @@ debug1: connect to address 192.168.0.201 port 22: Connection timed out
 ssh: connect to host 192.168.0.201 port 22: Connection timed out
 ```
 
-On **client1** `sudo iptables -A INPUT -i lo:20 -p icmp -j DROP`
+On **client1** `sudo iptables -A INPUT -p icmp --icmp-type 8 -d 172.17.42.1 -j REJECT`
 
 We have got this rule:
 ```
 ubuntu@client_1:~$ sudo iptables -L -v
-Chain INPUT (policy ACCEPT 44 packets, 2552 bytes)
+Chain INPUT (policy ACCEPT 7 packets, 404 bytes)
  pkts bytes target     prot opt in     out     source               destination
-    0     0 DROP       icmp --  lo:20  any     anywhere             anywhere
+    0     0 REJECT     icmp --  any    any     anywhere             172.17.42.1          icmp echo-request reject-with icmp-port-unreachable
 ```
 
 And ping from client2 to 172.17.42.1 doedn't works.
 ```
+ubuntu@client2:~$ ping -c 3 172.17.42.1
+PING 172.17.42.1 (172.17.42.1) 56(84) bytes of data.
+From 172.17.42.1 icmp_seq=1 Destination Port Unreachable
+From 172.17.42.1 icmp_seq=2 Destination Port Unreachable
+From 172.17.42.1 icmp_seq=3 Destination Port Unreachable
 
+--- 172.17.42.1 ping statistics ---
+3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 2307ms
 ```
