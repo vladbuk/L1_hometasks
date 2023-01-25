@@ -249,6 +249,20 @@ sudo ip addr add 172.17.42.1/24 dev lo label lo:20
 ```
 
 And routes:
-on client1: `ip route add 172.17.42.0/24 via 172.16.22.10`
-on server1: `ip route add 172.17.32.0/24 via 10.72.22.21`
+
+on client2: `sudo ip route add 172.17.42.0/24 via 172.16.22.10`
+
+on server1: `sudo ip route add 172.17.32.0/24 via 10.72.22.21`
+
+Results:
+
+```
+ubuntu@client2:~$ traceroute 172.17.32.1
+traceroute to 172.17.32.1 (172.17.32.1), 64 hops max
+  1   10.10.72.1  0.232ms  0.232ms  0.273ms
+  2   172.17.32.1  0.405ms  0.432ms  0.506ms
+
+ubuntu@client2:~$ traceroute 172.17.42.1
+traceroute to 172.17.42.1 (172.17.42.1), 64 hops max
+  1   172.17.42.1  0.296ms  0.165ms  0.196ms
 ```
