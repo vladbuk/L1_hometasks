@@ -296,3 +296,19 @@ traceroute to 172.17.42.1 (172.17.42.1), 64 hops max
   1   10.10.72.1  0.192ms  0.328ms  0.157ms
   2   172.17.42.1  0.682ms  0.329ms  0.276ms
 ```
+
+## Task 6: Configure SSH
+
+Trying from client1:
+```
+ssh ubuntu@192.168.0.201
+ssh ubuntu@10.10.72.21
+```
+Everything works fine.
+
+Trying from client2:
+```
+ssh ubuntu@192.168.0.201
+ssh ubuntu@10.72.22.10
+```
+Everything also works fine. SSH works very well from the box.
