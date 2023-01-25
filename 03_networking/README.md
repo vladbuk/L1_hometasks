@@ -19,10 +19,22 @@ sudo sysctl -w net.ipv4.ip_forward=1
 ```
 
 **client1**
+
+enp0s3: 10.72.22.10/24 (DHCP)
+
+enp0s8: 172.16.22.10/24 (Static)
+
 lo:10 172.17.32.1/24
-sudo ip addr add 172.17.32.1/24 dev lo label lo:10
+
 lo:20 172.17.42.1/24
+
+To add another IP address to existing interface run next commands:
+
+```
+sudo ip addr add 172.17.32.1/24 dev lo label lo:10
 sudo ip addr add 172.17.42.1/24 dev lo label lo:20
+```
+
 
 **client2**
 ip route add 172.17.42.0/24 via 172.16.22.10
