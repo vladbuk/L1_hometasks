@@ -1,0 +1,14 @@
+---
+- hosts: testing
+  gather_facts: false
+  become: true
+
+  tasks:
+
+  - name: "list dir"
+    ansible.builtin.shell: ls
+    register: result
+
+  - name: Print shell output
+    ansible.builtin.debug:
+      var: result
